@@ -42,5 +42,20 @@ public class StateWebMvcTests {
 	})
 	@Sql(statements = "delete from state", executionPhase = ExecutionPhase.AFTER_TEST_METHOD)
 	void shouldListStateFromDatabase() throws Exception {
+		// given
+		var request = get("/states");
+
+		// when
+		var response = mvc.perform(request);
+
+		// then
+		response.andExpectAll(
+			status().isOk(),
+			jsonPath("$", hasSize(2)),
+			jsonPath("$[0].uf", equalTo("RJ")),
+			jsonPath("$[0].nome", equalTo("Rio de Janeiro")),
+			jsonPath("$[1].uf", equalTo("SP")),
+			jsonPath("$[1].nome", equalTo("São Paulo"))
+		);
 	}
 }
