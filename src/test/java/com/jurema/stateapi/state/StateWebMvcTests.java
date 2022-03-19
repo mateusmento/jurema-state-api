@@ -34,4 +34,13 @@ public class StateWebMvcTests {
 			jsonPath("$", hasSize(0))
 		);
 	}
+
+	@Test
+	@Sql(statements = {
+		"insert into state (uf, name) values ('RJ', 'Rio de Janeiro')",
+		"insert into state (uf, name) values ('SP', 'São Paulo')"
+	})
+	@Sql(statements = "delete from state", executionPhase = ExecutionPhase.AFTER_TEST_METHOD)
+	void shouldListStateFromDatabase() throws Exception {
+	}
 }
