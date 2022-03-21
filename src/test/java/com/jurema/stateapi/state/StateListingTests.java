@@ -15,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.jdbc.Sql;
+import org.springframework.test.context.jdbc.SqlConfig;
 import org.springframework.test.context.jdbc.Sql.ExecutionPhase;
 
 @SpringBootTest
@@ -51,7 +52,7 @@ public class StateListingTests {
 	}
 
 	@Test
-	@Sql("classpath:datasets/states.sql")
+	@Sql(value = "classpath:datasets/states.sql", config = @SqlConfig(encoding = "UTF-8"))
 	@Sql(statements = "delete from state", executionPhase = ExecutionPhase.AFTER_TEST_METHOD)
 	void shouldListStateWithPopulation() {
 		when(statePopulationService.list()).thenReturn(statePopulations());

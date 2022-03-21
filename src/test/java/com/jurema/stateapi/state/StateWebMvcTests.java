@@ -7,6 +7,7 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.test.context.jdbc.Sql;
+import org.springframework.test.context.jdbc.SqlConfig;
 import org.springframework.test.context.jdbc.Sql.ExecutionPhase;
 import org.springframework.test.web.servlet.MockMvc;
 
@@ -33,7 +34,7 @@ public class StateWebMvcTests {
 	private StatePopulationService statePopulationService;
 
 	@Test
-	@Sql("classpath:datasets/states.sql")
+	@Sql(value = "classpath:datasets/states.sql", config = @SqlConfig(encoding = "UTF-8"))
 	@Sql(statements = "delete from state", executionPhase = ExecutionPhase.AFTER_TEST_METHOD)
 	void shouldListStateFromDatabase() throws Exception {
 		// given
