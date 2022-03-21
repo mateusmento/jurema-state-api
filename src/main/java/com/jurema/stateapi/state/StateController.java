@@ -14,11 +14,11 @@ import org.springframework.web.bind.annotation.RestController;
 public class StateController {
 
 	@Autowired
-	private StateRepository repo;
+	private StateService service;
 
 	@GetMapping
 	@ResponseStatus(code = HttpStatus.OK)
-	public List<State> list() {
-		return repo.findAll();
+	public List<StateDto> list() {
+		return service.listStateDto();
 	}
 }
