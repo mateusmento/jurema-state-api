@@ -11,7 +11,7 @@
 	<groupId>com.jurema</groupId>
 	<artifactId>jurema-state-api</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>war</packaging>
+	<packaging>jar</packaging>
 	<name>jurema-state-api</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
