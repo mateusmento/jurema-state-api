@@ -1,5 +1,3 @@
-truncate table state;
-
 insert into state (id, uf, name) values (1, 'SP', 'São Paulo');
 insert into state (id, uf, name) values (2, 'MG', 'Minas Gerais');
 insert into state (id, uf, name) values (3, 'RJ', 'Rio de Janeiro');
